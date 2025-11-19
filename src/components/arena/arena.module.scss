@@ -1,0 +1,22 @@
+.mainContainer {
+  .battle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .winner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .pokemon {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      align-items: center;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

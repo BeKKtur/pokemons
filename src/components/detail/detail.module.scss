@@ -1,0 +1,67 @@
+.container {
+  position: relative;
+  .mainContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .catch {
+      width: 140px;
+      position: absolute;
+      bottom: -275px;
+      left: 530px;
+      overflow: hidden;
+      background-color: #fff;
+      border: 1px solid black;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 50%;
+      }
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 230px;
+        background-color: rgb(206, 204, 204);
+        border-radius: 100%;
+      }
+      h2 {
+        border: 1px solid black;
+        padding: 10px 20px;
+        border-radius: 20px;
+      }
+    }
+    .abilities {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .ability {
+        text-align: center;
+        p {
+          background-color: rgb(206, 204, 204);
+          padding: 10px 20px;
+          border: 1px solid black;
+          border-radius: 15px;
+        }
+      }
+    }
+    .moves {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .move {
+        text-align: center;
+        p {
+          background-color: rgb(206, 204, 204);
+          padding: 10px 20px;
+          border: 1px solid black;
+          border-radius: 15px;
+        }
+      }
+    }
+  }
+}

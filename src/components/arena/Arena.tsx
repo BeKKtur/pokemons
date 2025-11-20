@@ -10,6 +10,7 @@ export default function Arena() {
   const [name1, setName1] = useState<string>(collection[0].name);
   const [name2, setName2] = useState<string>(collection[0].name);
   const [state, setState] = useState<boolean>(false);
+  const [result, setResult] = useState<string>("");
   useEffect(() => {
     getPokemonByName(name1);
   }, [name1]);
@@ -21,7 +22,10 @@ export default function Arena() {
     (acc, el, idx) => {
       if (el.base_stat > (pokemon2?.stats?.[idx]?.base_stat ?? 0)) {
         acc.pokemon1++;
+      } else if (el.base_stat < (pokemon2?.stats?.[idx]?.base_stat ?? 0)) {
+        acc.pokemon2++;
       } else {
+        acc.pokemon1++;
         acc.pokemon2++;
       }
       return acc;
@@ -32,8 +36,15 @@ export default function Arena() {
     }
   );
   function winner() {
+    if (!res) return;
+    if (res?.pokemon1 === res?.pokemon2) {
+      setResult("Draw");
+    } else if (res?.pokemon1! > res?.pokemon2!) {
+      setResult("won 1");
+    } else {
+      setResult("won 2");
+    }
     setState(true);
-    res?.pokemon1! > res?.pokemon2! ? "win1" : "win2";
   }
 
   return (
@@ -54,9 +65,7 @@ export default function Arena() {
             </div>
             <div className={scss.winner}>
               <h2 onClick={winner}>Battle</h2>
-              <p style={{ display: state ? "block" : "none" }}>
-                {res?.pokemon1! > res?.pokemon2! ? "won 1" : "won 2"}
-              </p>
+              <p style={{ display: state ? "block" : "none" }}>{result}</p>
             </div>
 
             <div className={scss.pokemon}>

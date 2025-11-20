@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import scss from "./header.module.scss";
+import { useCollections } from "../../hooks/collection/useCollections";
 
 export default function Header() {
   const navigate = useNavigate();
+  const { collection } = useCollections();
   return (
     <div className={scss.container}>
       <div className="container">
@@ -13,7 +15,20 @@ export default function Header() {
             onClick={() => navigate("/")}
           />
           <nav>
-            <Link to="/arena">Arena</Link>
+            {collection.length < 2 ? (
+              <button
+                onClick={() => {
+                  alert(
+                    "У вас должно быть минимум 2 покемона чтобы зайти в Арену"
+                  );
+                }}
+                className={scss.btn}
+              >
+                Arena
+              </button>
+            ) : (
+              <Link to="/arena">Arena</Link>
+            )}
             <Link to="/collections">Collections</Link>
           </nav>
         </div>
